@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GüdEats - Preferences</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="/img/logo.png"
+        alt="GüdEats Logo"
+        style="width: 10%; height: auto"
+      />
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <!-- You can add more navigation links specific to the login page if needed -->
+        </ul>
+      </nav>
+    </header>
+
+    <section id="user-preferences">
+      <!-- Container to display preferences -->
+      <h1>Custom Preferences</h1>
+      <div id="preferences-display"></div>
+      <div class="recipe-card">
+        <form id="user-preferences-form-2">
+          <label for="dietary-preferences">Dietary Preferences:</label>
+          <input
+            type="text"
+            id="dietary-preferences"
+            name="dietary-preferences"
+          />
+          />
+
+          <label for="preferred-cuisines">Preferred Cuisines:</label>
+          <input
+            type="text"
+            id="preferred-cuisines"
+            name="preferred-cuisines"
+            placeholder="Enter preferred cuisines..."
+          />
+
+          <label for="allergies">Allergies:</label>
+          <input
+            type="text"
+            id="allergies"
+            name="allergies"
+            placeholder="Enter allergies..."
+          />
+          <button type="button" id="submitButton" onclick="submitPreferences()">
+            Submit Preferences
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 GüdEats. All rights reserved.</p>
+    </footer>
+    <!-- Include your JavaScript scripts here -->
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GüdEats - Home</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <img src="/img/logo.png" alt="GüdEats Logo" style="width: 10%; height: auto;"/>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Recipes</a></li>
+          <li><a href="preferences.html">Preferences</a></li>
+          <li><a href="saved.html">Saved Recipes</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="registration.html">Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="hero">
+      <h1>Welcome to GüdEats!</h1>
+      <p>Discover and save delicious and healthy recipes.</p>
+      <input type="text" placeholder="Search for recipes..." />
+    </section>
+
+    <section id="featured-recipes">
+      <h2>Featured Recipes</h2>
+      <!-- Sample featured recipe cards -->
+      <div class="recipe-card">
+        <img class="recipe-image" src="/img/feta.png" alt="Recipe 1" />
+        <h3>Feta Tomato Sandwich</h3>
+        <p>Quick and delicious sandwich with feta, tomatoes, and sourdough.</p>
+        <div id="averageRating"></div>
+        <h4>Rate this recipe:</h3>
+        <form id="ratingForm">
+          <label for="rating">Rate from 1 to 5:</label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            min="1"
+            max="5"
+            required
+          />
+          <button type="button" onclick="submitRating()">Submit Rating</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p>&copy; 2023 GüdEats. All rights reserved.</p>
+    </footer>
+
+    <!-- Include your JavaScript scripts here -->
+    <script>
+      async function submitRating() {
+        // Get the input value
+        const ratingInput = document.getElementById("rating");
+        const rating = parseFloat(ratingInput.value);
+
+        // Check if the rating is valid
+        if (isNaN(rating) || rating < 1 || rating > 5) {
+          alert("Please enter a valid rating between 1 and 5.");
+          return;
+        }
+
+        // Send a POST request to the server
+        try {
+          const response = await fetch("/submit-rating", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ rating }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to submit rating.");
+          }
+
+          const result = await response.json();
+
+          // Display the average rating
+          const averageRatingElement = document.getElementById("averageRating");
+          averageRatingElement.textContent =
+            "Average Rating: " + result.averageRating + "\n("+result.numberOfRatings+" Ratings)";
+            
+        } catch (error) {
+          console.error(error.message);
+          alert("Failed to submit rating. Please try again.");
+        }
+
+        // Reset the input field
+        ratingInput.value = "";
+      }
+    </script>
+  </body>
+</html>
+
+

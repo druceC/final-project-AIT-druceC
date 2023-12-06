@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Include any additional styles or scripts specific to the login page -->
+    <script src="loginScript.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="/img/logo.png"
+        alt="GüdEats Logo"
+        style="width: 10%; height: auto"
+      />
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <!-- You can add more navigation links specific to the login page if needed -->
+        </ul>
+      </nav>
+    </header>
+
+    <section id="login-section">
+      <h1>Login Page</h1>
+
+      <!-- Login form -->
+      <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="button" onclick="submitLogin()">Login</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 GüdEats. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
